@@ -2,7 +2,7 @@ library random_string;
 
 import "dart:math";
 
-/// A random String generator.
+/// A generator of random character or String values.
 class RandomString {
 
   /// Private random number generator
@@ -17,6 +17,7 @@ class RandomString {
   /// Creates a new random String Generator.
   /// 
   /// The optional parameters [min] and [max] are used to set the default minimum and maximum character codes.
+  /// The default minimum and maximum character codes are `32` and `126`.
   /// 
   /// The optional named parameter [seed] is used to initialize the internal random number generator.
   RandomString({int min = 32, int max = 126, int seed}) {
@@ -34,7 +35,7 @@ class RandomString {
 
   /// Generates a random character.
   /// 
-  /// The optional parameters [min] and [max] are used to limit the range of the generated character codes.
+  /// The optional parameters [min] and [max] override the range of the generated character codes.
   String nextChar({int min, int max}) {
 
     // Use private min and max values if no custom values have been passed
@@ -54,7 +55,7 @@ class RandomString {
 
   /// Generates a random String with the passed [length].
   /// 
-  /// The optional parameters [min] and [max] limit the range of the characters in the generated String.
+  /// The optional parameters [min] and [max] override the range of the characters in the generated string.
   String nextString(int length, {int min, int max}) {
 
     // Use private min and max values if no custom values have been passed
