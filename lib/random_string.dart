@@ -8,10 +8,10 @@ class RandomString {
   /// Private random number generator
 	Random _random;
 
-  /// Private minimum characters code
+  /// Private minimum character code
   int _min;
 
-  /// Private maximum characters code
+  /// Private maximum character code
   int _max;
 
   /// Creates a new random String Generator.
