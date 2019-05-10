@@ -70,8 +70,6 @@ class RandomString {
     assert(min <= max);
 
     // Return String from List of random character codes
-    return String.fromCharCodes((List<int>(length)..fillRange(0, length)).map((e) {
-      return min + _random.nextInt(max + 1 - min);
-    }));
+    return String.fromCharCodes(List<int>.generate(length, (e) => min + _random.nextInt(max + 1 - min)));
   }
 }
