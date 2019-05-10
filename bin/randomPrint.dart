@@ -15,7 +15,7 @@ void main() {
 
 /// Generates and prints a random string until it equals [goal].
 /// 
-/// Starts with a random 12 character long string and replaces substrings starting from the left. Prints every step to console.
+/// Starts with a random string and replaces substrings starting from the left. Prints every step to console.
 /// 
 /// The optional parameter [delay] is the amount of time between two console outputs and defaults to `10ms`.
 /// 
