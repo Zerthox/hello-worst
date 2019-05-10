@@ -2,7 +2,7 @@ library random_string;
 
 import "dart:math";
 
-/// A generator of random character or String values.
+/// A generator of random String values.
 class RandomString {
 
   /// Private random number generator
@@ -50,7 +50,7 @@ class RandomString {
     assert(min <= max);
 
     // Generate random character within allowed range
-    return String.fromCharCode(min + _random.nextInt(max - min));
+    return String.fromCharCode(min + _random.nextInt(max + 1 - min));
   }
 
   /// Generates a random String with the passed [length].
@@ -71,7 +71,7 @@ class RandomString {
 
     // Return String from List of random character codes
     return String.fromCharCodes((List<int>(length)..fillRange(0, length)).map((e) {
-      return min + _random.nextInt(max - min);
+      return min + _random.nextInt(max + 1 - min);
     }));
   }
 }
