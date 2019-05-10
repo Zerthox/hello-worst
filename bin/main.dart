@@ -2,31 +2,48 @@ import "dart:io";
 
 import "../lib/random_string.dart";
 
-final generator = RandomString();
+final generator = RandomString(min: 32, max: 126);
 
 void main() {
 
   // Set delay
   const delay = Duration(milliseconds: 10);
 
-  // Call randomHello function
-  randomHello(delay);
+  // Call fullRandomPrint
+  fullRandomPrint("Hi", delay);
+  
+  // Call randomPrint
+  randomPrint("Hello World!", delay);
 }
 
-/// Genereates and prints a random string until it equals `"Hello World!"`.
+/// Generates and prints a random string until it equals [goal].
 /// 
 /// Starts with a random 12 character long string and replaces substrings starting from the left. Prints every step to console.
 /// 
 /// The optional parameter [delay] is the amount of time between two console outputs and defaults to `10ms`.
 /// 
-/// The optional parameter [goal] is used to override `"Hello World!"` as goal string.
-void randomHello([Duration delay = const Duration(milliseconds: 10), String goal = "Hello World!"]) {
+/// [goal] may not contain characters outside of the character code range `32` to `126`.
+void randomPrint(String goal, [Duration delay = const Duration(milliseconds: 10)]) {
 
-  // Generate the intial random string
+  // Iterate over characters in goal string
+  goal.split("").forEach((char) {
+
+    // Get character code of current character
+    var code = char.codeUnitAt(0);
+
+    // Check if character code is outside of the permitted character code range
+    assert(code >= 32 && code <= 126, "Goal '$goal' contains a character outside of the permitted character code range (32 - 126): $char");
+  });
+
+
+  // Generate the initial random string
   var random = generator.nextString(goal.length);
 
   // Print the initial random string
   print(random);
+
+  // Create counter
+  var n = 1;
 
   // Sleep
   sleep(delay);
@@ -42,26 +59,45 @@ void randomHello([Duration delay = const Duration(milliseconds: 10), String goal
       // Print the new random string
       print(random);
 
+      // Increase counter
+      n++;
+
       // Sleep
       sleep(delay);
     }
   }
+
+  // Print the amount of generated strings
+  print("Terminated with result '$goal' after $n generated strings.");
 }
 
-/// Generates and prints a random string until it equals `"Hello World!"`.
+/// Generates and prints random strings until it generates [goal].
 /// 
-/// Starts with a 12 character long random string and regenerates the whole string until it equals `"Hello World!"`.
+/// **WARNING:** This function takes forever to terminate if [goal] is longer than a very few characters.
 /// 
 /// The optional parameter [delay] is the amount of time between two console outputs and defaults to `10ms`.
-/// 
-/// The optional parameter [goal] is used to override `"Hello World!"` as goal string.
-void fullyRandomHello([Duration delay = const Duration(milliseconds: 10), String goal = "Hello World!"]) {
+///  
+/// [goal] may not contain characters outside of the character code range `32` to `126`.
+void fullRandomPrint(String goal, [Duration delay = const Duration(milliseconds: 0)]) {
+
+  // Iterate over characters in goal string
+  goal.split("").forEach((char) {
+
+    // Get character code of current character
+    var code = char.codeUnitAt(0);
+
+    // Check if character code is outside of the permitted character code range
+    assert(code >= 32 && code <= 126, "Goal '$goal' contains a character outside of the permitted character code range (32 - 126): $char");
+  });
 
   // Generate the initial random string
   var random = generator.nextString(goal.length);
 
   // Print the initial random string
   print(random);
+
+  // Create counter
+  var n = 1;
 
   // Sleep
   sleep(delay);
@@ -75,7 +111,12 @@ void fullyRandomHello([Duration delay = const Duration(milliseconds: 10), String
     // Print the new random string
     print(random);
 
+    // Increase counter
+    n++;
+
     // Sleep
     sleep(delay);
   }
+
+  print("Terminated with result '$random' after $n generated strings.");
 }
