@@ -23,15 +23,11 @@ void main() {
 void randomPrint(String goal, [Duration delay = const Duration(milliseconds: 10)]) {
 
   // Iterate over characters in goal string
-  goal.split("").forEach((char) {
-
-    // Get character code of current character
-    var code = char.codeUnitAt(0);
+  for (var char in goal.codeUnits) {
 
     // Check if character code is outside of the permitted character code range
-    assert(code >= 32 && code <= 126, "Goal '$goal' contains a character outside of the permitted character code range (32 - 126): $char");
-  });
-
+    assert(char >= 32 && char <= 126, "Goal '$goal' contains a character outside of the permitted character code range (32 - 126): ${String.fromCharCode(char)}");
+  }
 
   // Generate the initial random string
   var random = generator.nextString(goal.length);
@@ -65,5 +61,5 @@ void randomPrint(String goal, [Duration delay = const Duration(milliseconds: 10)
   }
 
   // Print the amount of generated strings
-  print("Terminated with result '$goal' after $n generated strings.");
+  print("Terminated with result '$random' after $n generated strings.");
 }
