@@ -33,7 +33,7 @@ void main() {
     // Create counter
     var n = 1;
 
-    // Loop while "goal is not reached
+    // Loop while goal is not reached
     while (random != goal) {
 
       // Generate a new random string
