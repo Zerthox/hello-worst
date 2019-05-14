@@ -1,6 +1,6 @@
 name: hello_worst
 version: 0.1.0
 author: Zerthox
-repository: https://github.com/Zerthox/hello-worst
+repository: https://github.com/Zerthox/hello_worst
 enivonment:
   sdk: ^2.0.0
