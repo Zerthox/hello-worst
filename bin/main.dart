@@ -1,6 +1,6 @@
 import "dart:io";
 
-import "../lib/random_string.dart";
+import "package:hello_worst/random_string.dart";
 
 final generator = RandomString(min: 32, max: 126);
 
