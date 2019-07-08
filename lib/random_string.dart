@@ -6,7 +6,7 @@ import "dart:math";
 class RandomString {
 
   /// Private random number generator
-	Random _random;
+  Random _random;
 
   /// Private minimum character code
   int _min;
